@@ -1,0 +1,16 @@
+import React from "react";
+
+const EventCard = ({ category, date, description, title }) => {
+  return (
+    <div>
+      <div className="flex flex-col gap-4 p-4 my-4 rounded-2xl shadow-2xl shadow-black/30 bg-white/30 w-80 h-full justify-between">
+        <h1>{title}</h1>
+        <p>{category}</p>
+        <p>{description}</p>
+        <p>{date}</p>
+      </div>
+    </div>
+  );
+};
+
+export default EventCard;
