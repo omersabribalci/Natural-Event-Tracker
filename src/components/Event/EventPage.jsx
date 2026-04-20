@@ -18,7 +18,7 @@ const EventPage = () => {
     dispatch(fetchStart());
 
     fetch(
-      "https://eonet.gsfc.nasa.gov/api/v3/events?status=open&days=30&limit=50",
+      "https://eonet.gsfc.nasa.gov/api/v3/events?status=open&days=30&limit=20",
       { signal: controller.signal },
     )
       .then((res) => res.json())
@@ -50,10 +50,10 @@ const EventPage = () => {
       controller.abort();
     };
   }, []);
-  console.log(state);
+
   return (
     <div>
-      <EventAddForm />
+      <EventAddForm dispatch={dispatch} />
       {state.error ? (
         <div>An error occurred while fetching data.</div>
       ) : (

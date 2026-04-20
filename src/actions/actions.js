@@ -39,8 +39,15 @@ export const setSearchTerm = (term) => {
   return { type: SET_SEARCH_TERM, payload: term };
 };
 
-//OTHERS
+// EVENT
 export const ADD_EVENT = "ADD_EVENT";
+export const DELETE_EVENT = "DELETE_EVENT";
+
+export const addEvent = (event) => {
+  return { type: ADD_EVENT, payload: event };
+};
+
+// MODAL
+
 export const OPEN_DELETE_MODAL = "OPEN_DELETE_MODAL";
 export const CLOSE_DELETE_MODAL = "CLOSE_DELETE_MODAL";
-export const DELETE_EVENT = "DELETE_EVENT";
