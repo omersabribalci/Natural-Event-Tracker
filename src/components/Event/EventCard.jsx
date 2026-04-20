@@ -11,6 +11,7 @@ const EventCard = ({ category, date, description, title, dispatch, event }) => {
         <p>{date}</p>
 
         <button
+          className="cursor-pointer"
           onClick={() => {
             dispatch(openDeleteModal(event));
           }}

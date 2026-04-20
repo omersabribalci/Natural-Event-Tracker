@@ -30,7 +30,7 @@ const EventAddForm = ({ dispatch }) => {
           errors={errors}
         />
       ))}
-      <button>Add Event</button>
+      <button className="cursor-pointer">Add Event</button>
     </form>
   );
 };

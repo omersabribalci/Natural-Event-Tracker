@@ -53,9 +53,10 @@ const EventPage = () => {
       controller.abort();
     };
   }, []);
-  console.log(state);
+
   return (
     <div>
+      <h1>Natural Event Tracker</h1>
       <EventAddForm dispatch={dispatch} />
       {state.error ? (
         <div>An error occurred while fetching data.</div>

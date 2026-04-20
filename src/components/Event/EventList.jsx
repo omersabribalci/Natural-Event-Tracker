@@ -10,6 +10,13 @@ const EventList = ({
   dispatch,
   searchTerm,
 }) => {
+  const filteredEvents = events
+    .filter((event) =>
+      event.title.toLowerCase().includes(searchTerm.trim().toLowerCase()),
+    )
+    .filter((event) =>
+      selectedCategory !== "All" ? event.category === selectedCategory : true,
+    );
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -46,23 +53,18 @@ const EventList = ({
         </label>
       </div>
       <div className="px-10 py-5 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] place-items-center gap-10">
-        {events
-          .filter((event) =>
-            event.title.toLowerCase().includes(searchTerm.trim().toLowerCase()),
-          )
-          .filter((event) =>
-            selectedCategory !== "All"
-              ? event.category === selectedCategory
-              : true,
-          )
-          .map((event) => (
+        {filteredEvents.length === 0 ? (
+          <p>Not event found...</p>
+        ) : (
+          filteredEvents.map((event) => (
             <EventCard
               key={event.id}
               {...event}
               dispatch={dispatch}
               event={event}
             />
-          ))}
+          ))
+        )}
       </div>
     </>
   );
