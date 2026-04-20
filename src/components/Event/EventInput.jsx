@@ -12,7 +12,7 @@ const EventInput = ({
 }) => {
   return (
     <>
-      <label htmlFor="" className="flex flex-col">
+      <label className="flex flex-col">
         {label}
         <input
           type={type}

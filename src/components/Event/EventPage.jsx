@@ -56,7 +56,7 @@ const EventPage = () => {
       <EventAddForm dispatch={dispatch} />
       {state.error ? (
         <div>An error occurred while fetching data.</div>
-      ) : (
+      ) : state.events.length !== 0 ? (
         <EventList
           isLoading={state.isLoading}
           events={state.events}
@@ -65,6 +65,8 @@ const EventPage = () => {
           dispatch={dispatch}
           searchTerm={state.searchTerm}
         />
+      ) : (
+        <div>No event...</div>
       )}
     </div>
   );

@@ -1,6 +1,7 @@
 import {
   ADD_EVENT,
   CREATE_CATEGORIES,
+  DELETE_EVENT,
   FETCH_ERROR,
   FETCH_START,
   FETCH_SUCCESS,
@@ -39,6 +40,11 @@ export const reducer = (state, action) => {
       return { ...state, searchTerm: action.payload };
     case ADD_EVENT:
       return { ...state, events: [action.payload, ...state.events] };
+    case DELETE_EVENT:
+      return {
+        ...state,
+        events: state.events.filter((event) => event.id !== action.payload),
+      };
     default:
       return state;
   }

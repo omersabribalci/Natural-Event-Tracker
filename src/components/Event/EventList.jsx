@@ -56,7 +56,7 @@ const EventList = ({
               : true,
           )
           .map((event) => (
-            <EventCard key={event.id} {...event} />
+            <EventCard key={event.id} {...event} dispatch={dispatch} />
           ))}
       </div>
     </>

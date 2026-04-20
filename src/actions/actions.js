@@ -47,6 +47,10 @@ export const addEvent = (event) => {
   return { type: ADD_EVENT, payload: event };
 };
 
+export const deleteEvent = (id) => {
+  return { type: DELETE_EVENT, payload: id };
+};
+
 // MODAL
 
 export const OPEN_DELETE_MODAL = "OPEN_DELETE_MODAL";
