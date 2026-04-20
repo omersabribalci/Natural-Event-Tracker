@@ -3,11 +3,14 @@ import EventAddForm from "./EventAddForm";
 import EventList from "./EventList";
 import { initialState, reducer } from "../../reducers/reducer";
 import {
+  closeDeleteModal,
   createCategories,
+  deleteEvent,
   fetchError,
   fetchStart,
   fetchSuccess,
 } from "../../actions/actions";
+import Modal from "../UI/Modal";
 
 const EventPage = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -50,7 +53,7 @@ const EventPage = () => {
       controller.abort();
     };
   }, []);
-
+  console.log(state);
   return (
     <div>
       <EventAddForm dispatch={dispatch} />
@@ -67,6 +70,15 @@ const EventPage = () => {
         />
       ) : (
         <div>No event...</div>
+      )}
+      {state.isDeleteModalOpen && (
+        <Modal
+          isDeleteModalOpen={state.isDeleteModalOpen}
+          title={state.selectedEvent.title}
+          desc="Are you sure you want to delete this event?"
+          onClose={() => dispatch(closeDeleteModal())}
+          onDelete={() => dispatch(deleteEvent(state.selectedEvent.id))}
+        />
       )}
     </div>
   );

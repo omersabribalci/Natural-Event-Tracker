@@ -55,3 +55,11 @@ export const deleteEvent = (id) => {
 
 export const OPEN_DELETE_MODAL = "OPEN_DELETE_MODAL";
 export const CLOSE_DELETE_MODAL = "CLOSE_DELETE_MODAL";
+
+export const openDeleteModal = (event) => {
+  return { type: OPEN_DELETE_MODAL, payload: event };
+};
+
+export const closeDeleteModal = () => {
+  return { type: CLOSE_DELETE_MODAL };
+};

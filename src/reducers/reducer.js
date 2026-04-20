@@ -1,10 +1,12 @@
 import {
   ADD_EVENT,
+  CLOSE_DELETE_MODAL,
   CREATE_CATEGORIES,
   DELETE_EVENT,
   FETCH_ERROR,
   FETCH_START,
   FETCH_SUCCESS,
+  OPEN_DELETE_MODAL,
   SET_CATEGORY,
   SET_SEARCH_TERM,
 } from "../actions/actions";
@@ -17,7 +19,7 @@ export const initialState = {
   categories: [],
   selectedCategory: "All",
   isDeleteModalOpen: false,
-  selectedEvent: "",
+  selectedEvent: {},
 };
 
 export const reducer = (state, action) => {
@@ -44,6 +46,18 @@ export const reducer = (state, action) => {
       return {
         ...state,
         events: state.events.filter((event) => event.id !== action.payload),
+      };
+    case OPEN_DELETE_MODAL:
+      return {
+        ...state,
+        isDeleteModalOpen: true,
+        selectedEvent: { ...state.selectedEvent, ...action.payload },
+      };
+    case CLOSE_DELETE_MODAL:
+      return {
+        ...state,
+        isDeleteModalOpen: false,
+        selectedEvent: {},
       };
     default:
       return state;

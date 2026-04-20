@@ -1,7 +1,7 @@
 import React from "react";
-import { deleteEvent } from "../../actions/actions";
+import { openDeleteModal } from "../../actions/actions";
 
-const EventCard = ({ category, date, description, title, id, dispatch }) => {
+const EventCard = ({ category, date, description, title, dispatch, event }) => {
   return (
     <div>
       <div className="flex flex-col gap-4 p-4 my-4 rounded-2xl shadow-2xl shadow-black/30 bg-white/30 w-80 h-full justify-between">
@@ -12,7 +12,7 @@ const EventCard = ({ category, date, description, title, id, dispatch }) => {
 
         <button
           onClick={() => {
-            dispatch(deleteEvent(id));
+            dispatch(openDeleteModal(event));
           }}
         >
           Delete
